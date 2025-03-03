@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Medicine Management</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            margin: 0 5px;
+            background-color: white;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .tab.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .ban-button {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .ban-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Government Medicine Management</h1>
+        <div class="tab-container">
+            <div id="medicinesTab" class="tab active">Medicines</div>
+            <!-- Use an anchor tag for proper redirection -->
+            <a href="fetch_report.html" id="reportsTab" class="tab">Reports</a>
+            
+        </div>
+
+        <!-- Medicines Table -->
+        <div id="medicineTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Manufacturer</th>
+                        <th>Manufacture Date</th>
+                        <th>Expiry Date</th>
+                        <th>Is Verified</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="medicineTableBody">
+                    <!-- Medicine rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAYgjAAVKC3AuzvEzH402PcxFF66MdUEaA",
+            authDomain: "manufacturer-database.firebaseapp.com",
+            databaseURL: "https://manufacturer-database-default-rtdb.firebaseio.com",
+            projectId: "manufacturer-database",
+            storageBucket: "manufacturer-database.firebasestorage.app",
+            messagingSenderId: "921165353469",
+            appId: "1:921165353469:web:74690781fae7d32eda8994",
+            measurementId: "G-Z8L28GCVR2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        const medicineTableBody = document.getElementById('medicineTableBody');
+
+        // Ban medicine function
+        function banMedicine(key, medicineName) {
+            if (confirm(`Are you sure you want to ban ${medicineName}?`)) {
+                const medicineRef = ref(database, `medicines/${key}`);
+                update(medicineRef, { isVerified: false })
+                    .then(() => alert(`${medicineName} has been banned.`))
+                    .catch((error) => console.error('Error banning medicine:', error));
+            }
+        }
+
+        window.banMedicine = banMedicine;
+
+        function loadMedicines() {
+            const medicinesRef = ref(database, 'medicines');
+            onValue(medicinesRef, (snapshot) => {
+                const data = snapshot.val();
+                medicineTableBody.innerHTML = ''; // Clear previous data
+                for (const key in data) {
+                    const medicine = data[key];
+                    const row = `
+                        <tr>
+                            <td>${medicine.medicineName}</td>
+                            <td>${medicine.manufacturer}</td>
+                            <td>${medicine.manufactureDate}</td>
+                            <td>${medicine.expiryDate}</td>
+                            <td>${medicine.isVerified ? 'Yes' : 'No'}</td>
+                            <td><button class="ban-button" onclick="banMedicine('${key}', '${medicine.medicineName}')">Ban</button></td>
+                        </tr>
+                    `;
+                    medicineTableBody.insertAdjacentHTML('beforeend', row);
+                }
+            });
+        }
+
+        // Load medicines on page load
+        loadMedicines();
+    </script>
+</body>
+
+</html>

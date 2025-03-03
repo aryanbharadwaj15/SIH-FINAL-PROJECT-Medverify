@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Login</title>
+    <!-- Include Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="hospitallogin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="close-btn" onclick="window.location.href = 'home.html'">✖</div>
+        <h1>Hospital Login</h1>
+        <form id="hospital-login-form">
+            <!-- Dropdown Menu -->
+            <label for="hospital-dropdown">Select Hospital:</label>
+            <select id="hospital-dropdown" style="width: 100%;" required>
+                <option value="" disabled selected>Select a hospital</option>
+                <!-- Options will be added dynamically -->
+            </select>
+            
+            <!-- Email Input -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            
+            <!-- Password Input -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            
+            <!-- Submit Button -->
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script type="module" src="hospitallogin.js"></script>
+</body>
+</html>

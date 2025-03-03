@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Medicine Management</title>
+    <link rel="stylesheet" href="fetch_report.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Government Medicine Management</h1>
+        <div class="tab-container">
+            <a href="government.html" id="medicinesTab" class="tab active">Medicines</a>
+            <div id="reportsTab" class="tab">Reports</div>
+        </div>
+
+        <!-- Medicines Table -->
+        <div id="medicineTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Manufacturer</th>
+                        <th>Manufacture Date</th>
+                        <th>Expiry Date</th>
+                        <th>Is Verified</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="medicineTableBody">
+                    <!-- Medicine rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Reports Section -->
+        <div id="reportsContainer">
+            <!-- Reports will be populated here -->
+        </div>
+    </div>
+
+    <script src="fetch_report.js" type="module"></script>
+</body>
+
+</html>

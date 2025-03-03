@@ -1,0 +1,150 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  header {
+    background-color: #60a3bc;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 3rem;
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #1ef8ff;
+    .back-button {
+      background: linear-gradient(135deg, #ff0099, #9900ff); /* Hot pink to deep purple */
+      color: #fff;
+    }
+    
+    .back-button:hover {
+      background: linear-gradient(135deg, #9900ff, #ff0099); /* Reverse gradient */
+    }
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    height: 17%;
+  }
+  
+  .back-button:hover {
+    .back-button {
+      background: linear-gradient(135deg, #ff0099, #9900ff); /* Hot pink to deep purple */
+      color: #fff;
+    }
+    
+    .back-button:hover {
+      background: linear-gradient(135deg, #9900ff, #ff0099); /* Reverse gradient */
+    }
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .back-button i {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  .back-button span {
+    font-weight: 600;
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 60px 20px;
+    background-color: #fff;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .intro {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  .intro p {
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  /* Feature List */
+  .feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  .feature-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .feature-item i {
+    font-size: 48px;
+    color: #3498db;
+    margin-bottom: 20px;
+  }
+  
+  .feature-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .feature-item p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #60a3bc;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  

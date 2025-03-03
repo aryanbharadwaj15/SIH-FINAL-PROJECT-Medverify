@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+.container h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+.container form {
+  display: flex;
+  flex-direction: column;
+}
+.container form .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.container form .form-group label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  display: block;
+}
+.container form .form-group input,
+.container form .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+.container form .form-group input:focus,
+.container form .form-group textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+.container form .form-group textarea {
+  resize: none;
+}
+.container form .submit-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.container form .submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Popup Styles */
+.thank-you-popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.popup-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.popup-content p {
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none !important; /* To hide the form on submission */
+}
+
+/*# sourceMappingURL=feedback.css.map */

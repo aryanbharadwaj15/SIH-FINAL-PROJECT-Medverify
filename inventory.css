@@ -1,0 +1,196 @@
+/* inventory.css */
+
+/* Variables */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #343a40;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: white;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --small-btn-bg: #28a745;
+    --small-btn-hover-bg: #218838;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow);
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e0e0e0;
+}
+
+.logout-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
+
+.search-container {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search {
+    padding: 10px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    width: 70%;
+    transition: border-color 0.3s;
+}
+
+#search:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#add-item-btn {
+    background-color: var(--small-btn-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#add-item-btn:hover {
+    background-color: var(--small-btn-hover-bg);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+table th, table td {
+    padding: 15px 20px;
+    border: 1px solid var(--secondary-color);
+    text-align: left;
+}
+
+table th {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+table tbody tr {
+    transition: background 0.3s, transform 0.2s;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+    transform: scale(1.01);
+}
+
+button.edit-btn, button.delete-btn {
+    background: var(--small-btn-bg);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button.edit-btn:hover {
+    background: var(--small-btn-hover-bg);
+    transform: scale(1.05);
+}
+
+button.delete-btn {
+    background: #dc3545;
+}
+
+button.delete-btn:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+#notification {
+    margin: 20px;
+    color: var(--text-color);
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #search {
+        width: 100%;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}

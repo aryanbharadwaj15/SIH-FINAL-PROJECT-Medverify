@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #4CAF50;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav button {
+            background-color: white;
+            color: #4CAF50;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav button:hover {
+            background-color: #45a049;
+            color: white;
+        }
+
+        .main-container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .card h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        table th {
+            background-color: #f4f4f9;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+            }
+
+            .main-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Hospital Dashboard</h1>
+
+        <button class="btn btn-logout" id="logoutBtn">Logout</button>
+    </div>
+
+    <div class="nav">
+        <button onclick="window.location.href='scanner.html'">Scanner</button>
+        <button onclick="showSection('inventory')">Inventory</button>
+        <button onclick="showSection('analytics')">Analytics</button>
+    </div>
+
+    <div class="main-container">
+        <!-- Inventory Section -->
+        <div class="card" id="inventory" style="display: none;">
+            <h2>Inventory Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine</th>
+                        <th>Expiry Date</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Paracetamol</td>
+                        <td>2025-01-10</td>
+                        <td>200</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>Amoxicillin</td>
+                        <td>2024-06-15</td>
+                        <td>150</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>Ibuprofen</td>
+                        <td>2023-12-01</td>
+                        <td>80</td>
+                        <td>Low Stock</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Analytics Section -->
+        <div class="card" id="analytics" style="display: flex; flex-direction: column;">
+            <h2>Analytics Dashboard</h2>
+            <div class="chart-container">
+                <canvas id="mainChart"></canvas>
+            </div>
+            <h2>Additional Data</h2>
+            <div class="chart-container">
+                <canvas id="secondaryChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="hospital-dashboard.js"></script>
+</body>
+
+</html>
