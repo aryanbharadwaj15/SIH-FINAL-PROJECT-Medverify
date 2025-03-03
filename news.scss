@@ -1,0 +1,211 @@
+// Variables for colors, fonts, and breakpoints
+$primary-color: #005f99;
+$secondary-color: #fff
+
+5f5f5;
+$font-family: 'Helvetica, Arial, sans-serif';
+$breakpoint-md: 768px;
+
+body {
+    font-family: $font-family;
+    margin: 0;
+    background-color: $secondary-color;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary-color;
+    padding: 20px;
+    color: white;
+
+    .logo {
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+    }
+
+    nav {
+        a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+            &:hover {
+                text-decoration: underline;
+                color: #ffc107;
+            }
+        }
+    }
+
+    .search-bar {
+        display: flex;
+
+        input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        button {
+            padding: 5px;
+            border: none;
+            background-color: #ffc107;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            &:hover {
+                background-color: #e0a800;
+            }
+        }
+    }
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+
+    .news-section {
+        flex: 3;
+        margin-right: 30px;
+
+        h2 {
+            font-size: 36px;
+            border-bottom: 2px solid $primary-color;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .top-news {
+            display: flex;
+            justify-content: space-between;
+
+            .news-item {
+                flex: 1;
+                margin: 15px;
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                h3 {
+                    margin-top: 10px;
+                    font-size: 24px;
+                }
+                p {
+                    font-size: 16px;
+                    color: #555;
+                }
+            }
+        }
+
+        .news-columns {
+            display: flex;
+            flex-wrap: wrap;
+
+            .column {
+                flex: 0 0 48%;
+                margin: 10px 1%;
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                h3 {
+                    margin-top: 5px;
+                    font-size: 20px;
+                }
+                p {
+                    font-size: 14px;
+                    color: #666;
+                }
+                a {
+                    color: $primary-color;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .research-section {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+
+            .research-item {
+                margin: 20px 0;
+                img {
+                    width: 80%;  // Smaller image container
+                    height: auto;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                h3 {
+                    font-size: 20px;
+                    margin: 10px 0;
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        flex: 1;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .trending-news, .latest-news {
+            margin-top: 20px;
+
+            .news-item {
+                margin-bottom: 10px;
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+                a {
+                    font-size: 16px;
+                    display: block;
+                    margin-top: 5px;
+                    color: $primary-color;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background-color: $primary-color;
+    color: white;
+    padding: 20px;
+    text-align: center;
+
+    .footer-links {
+        margin-top: 10px;
+
+        a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Data Extractor</title>
+</head>
+
+<body>
+    <h1>QR Code Data Extractor</h1>
+    <label for="urlInput">Enter URL:</label>
+    <input type="text" id="urlInput" placeholder="Enter website URL">
+    <button id="fetchDataBtn">Fetch Data</button>
+
+    <h3>Extracted Data:</h3>
+    <div id="output"></div>
+
+    <script>
+        fetch("http://localhost:5500/fetch?url=https://sun.psverify.com/21/BAVZJETVC")
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error("Error:", error));
+
+
+        // Keywords for field mapping
+        const fieldKeywords = {
+            medicineName: ["Generic Name", "Medicine Name", "Product Name", "Drug Name"],
+            manufacturingDate: ["Manufacturing Date", "MFD", "Manufactured On", "Date of Manufacturing"],
+            expiryDate: ["Expiry Date", "EXP", "Expires On", "Date of Expiry"],
+            batchNumber: ["Batch No", "Batch Number", "Lot"]
+        };
+
+        // Function to extract data from webpage
+        async function extractData(url) {
+            try {
+                // Fetch the webpage
+                const response = await fetch(url);
+                const htmlText = await response.text();
+
+                // Parse the HTML content
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, "text/html");
+
+                // Search for data
+                const extractedData = {};
+                for (const [field, keywords] of Object.entries(fieldKeywords)) {
+                    for (const keyword of keywords) {
+                        const element = [...doc.body.querySelectorAll('*')]
+                            .find(el => el.textContent && el.textContent.includes(keyword));
+                        if (element) {
+                            extractedData[field] = element.nextSibling ? element.nextSibling.textContent.trim() : element.textContent.trim();
+                            break;
+                        }
+                    }
+                }
+
+                // Display extracted data
+                document.getElementById("output").innerText = JSON.stringify(extractedData, null, 2);
+            } catch (error) {
+                console.error("Error fetching or parsing data:", error);
+                document.getElementById("output").innerText = "Failed to extract data.";
+            }
+        }
+
+        // Event listener for the fetch button
+        document.getElementById("fetchDataBtn").addEventListener("click", () => {
+            const url = document.getElementById("urlInput").value;
+            if (url) {
+                extractData(url);
+            } else {
+                alert("Please enter a valid URL!");
+            }
+        });
+    </script>
+</body>
+
+</html>

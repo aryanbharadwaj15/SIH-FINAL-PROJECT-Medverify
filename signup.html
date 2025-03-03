@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+
+</head>
+
+<body>
+
+    <div class="signup-container">
+        <!-- Close Button -->
+        <span class="close-btn" onclick="window.location.href='home.html'">X</span>
+
+        <!-- Sign Up Form -->
+        <h2>Create Your Account</h2>
+
+
+        <form class="signup-form">
+            
+            <input type="text" name="fullname" placeholder="Full Name" id="name" required>
+            <input type="email" name="email" placeholder="Email Address" id="email" required>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+
+
+            <button type="submit" id="submit">Sign Up</button>
+        </form>
+        <!-- Login Link -->
+        <div class="login-link">
+            Already a user? <a href="login.html">Login</a>
+        </div>
+
+        <!-- Social Login Options -->
+        <div class="social-login">
+            <div class="divider">
+                -----------------------------------<div class="or">OR</div>
+                -----------------------------------
+            </div>
+
+            <button>
+                <img src="1657955079google-icon-png.png" alt="Google">
+                Continue with Google
+            </button>
+            <button>
+                <img src="facebook.jpeg" alt="Facebook">
+                Continue with Facebook
+            </button>
+            <button>
+                <img src="apple.png" alt="Apple">
+                Continue with Apple
+            </button>
+
+        </div>
+    </div>
+    
+    <script type="module" src="signup.js"></script>
+    
+
+
+
+
+</body>
+
+</html>

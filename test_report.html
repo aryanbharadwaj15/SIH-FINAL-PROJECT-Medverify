@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Issue Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="test_report.css">
+</head>
+<body>
+  <div class="report-container">
+    <h1>Report Medicine Issue</h1>
+    <p>If you found an issue with the medicine quality report, please fill out the form below.</p>
+
+    <form id="reportForm">
+      <div class="form-group">
+        <label for="qrLink">QR Code Link</label>
+        <input type="url" id="qrLink" name="qrLink" placeholder="Enter QR Code link" required>
+      </div>
+      <div class="form-group">
+        <label for="medicineName">Medicine Name</label>
+        <input type="text" id="medicineName" name="medicineName" placeholder="Enter Medicine Name" required>
+      </div>
+      <div class="form-group">
+        <label for="medicineId">Medicine ID</label>
+        <input type="text" id="medicineId" name="medicineId" placeholder="Enter Medicine ID" required>
+      </div>
+      <div class="form-group">
+        <label for="faultDescription">Fault Found</label>
+        <textarea id="faultDescription" name="faultDescription" rows="4" placeholder="Describe the issue or fault found in the medicine" required></textarea>
+      </div>
+      <!-- Verified select dropdown -->
+      <div class="form-group">
+        <label for="isVerified">Is this report verified?</label>
+        <select id="isVerified" name="isVerified" required>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Submit Report</button>
+    </form>
+    <div id="formMessage" class="hidden">
+      <p>Thank you for your report! The issue has been submitted to the maintainers.</p>
+    </div>
+  </div>
+
+  <!-- Firebase CDN -->
+  <script type="module">
+    // Import Firebase SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCqxYq1sTUz1sTICtQgT6qhKyxEn_2il5I",
+      authDomain: "report-d7fdc.firebaseapp.com",
+      databaseURL: "https://report-d7fdc-default-rtdb.firebaseio.com",
+      projectId: "report-d7fdc",
+      storageBucket: "report-d7fdc.firebasestorage.app",
+      messagingSenderId: "157809266663",
+      appId: "1:157809266663:web:db01d06ae6822f843d7742",
+      measurementId: "G-HX886C1E3X"
+    };
+
+    // Initialize Firebase App
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Handle Form Submission
+    document.getElementById("reportForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      // Collect form data
+      const qrLink = document.getElementById("qrLink").value;
+      const medicineName = document.getElementById("medicineName").value;
+      const medicineId = document.getElementById("medicineId").value;
+      const faultDescription = document.getElementById("faultDescription").value;
+      const isVerified = document.getElementById("isVerified").value === 'true'; // Get verified value from select dropdown
+
+      // Create report data object
+      const reportData = {
+        qrLink,
+        medicineName,
+        medicineId,
+        faultDescription,
+        isVerified, // Add isVerified to the report data
+        timestamp: new Date().toISOString()
+      };
+
+      try {
+        // Push data to Firebase Database
+        const reportsRef = ref(database, "reports");
+        await push(reportsRef, reportData);
+
+        // Show success message and reset form
+        document.getElementById("formMessage").classList.remove("hidden");
+        document.getElementById("reportForm").reset();
+        console.log("Report submitted successfully!");
+      } catch (error) {
+        console.error("Error submitting the report:", error);
+        alert("There was an issue submitting the report. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Manufacturer Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .form-container input,
+        .form-container button
+         {
+            width: 95%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-container input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .checkbox-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+            width: 3%;
+            align-items: center;
+        }
+
+        #qrcode {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .download-btn {
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .cross-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .cross-btn:hover {
+            color: #4CAF50;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <a href="manufacturer-dashboard.html" class="cross-btn">&times;</a>
+        <h2>Medicine Details</h2>
+        <form id="medicineForm">
+            <label for="manufacturer">Manufacturer Name:</label>
+            <input type="text" id="manufacturer" placeholder="Enter manufacturer name" required>
+
+            <label for="medicineName">Medicine Name:</label>
+            <input type="text" id="medicineName" placeholder="Enter medicine name" required>
+
+            <label for="medicineId">Medicine ID:</label>
+            <input type="text" id="medicineId" placeholder="Enter medicine ID" required>
+
+            
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Enter quantity" required>
+
+            <label for="manufactureDate">Manufacturing Date:</label>
+            <input type="date" id="manufactureDate" required>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" id="expiryDate" required>
+
+            
+
+            
+
+            <label for="drivelink">Drive Link:</label>
+            <input type="url" id="drivelink" placeholder="Enter Google Drive link of the pdf" required>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="isVerified">
+                <label for="isVerified">Verified</label>
+            </div>
+
+            <button type="button" id="submitBtn">Submit</button>
+            <button type="button" id="generateQrBtn">Generate QR</button>
+            <div id="qrcode"></div>
+            <button type="button" id="downloadBtn" class="download-btn">Download QR</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module" src="manufacturer.js">
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Type</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #acacf0;
+        }
+
+        .login-type-container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        .login-type-container h1 {
+            margin-bottom: 20px;
+        }
+
+        .login-option {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-option button {
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-option button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .close-btn {
+            
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-type-container">
+        <div class="close-btn" onclick="window.location.href = 'home.html'">✖</div>
+        <h1>Login As</h1>
+        <div class="login-option">
+            <button onclick="window.location.href='login.html'">User</button>
+            <button onclick="window.location.href='manufacturerlogin.html'">Manufacturer</button>
+            <button onclick="window.location.href='hospitallogin.html'">Hospital</button>
+            <button onclick="window.location.href='governmentlogin.html'">Government</button>
+        </div>
+    </div>
+</body>
+
+</html>

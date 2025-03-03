@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .scanner-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        video {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        #scan-result {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #scan-status {
+            font-weight: bold;
+            color: #333;
+        }
+
+        #error-message {
+            color: red;
+        }
+
+        #medicine-info {
+            background: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #medicine-info h3 {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanner-container">
+        <h2>QR Code Scanner</h2>
+        <video id="scanner" width="400" height="300"></video>
+        <div id="scan-result">
+            <p id="scan-status">Scanning...</p>
+            <div id="medicine-info" style="display: none;">
+                <h3>Medicine Details</h3>
+                <p><strong>Manufacturer:</strong> <span id="manufacturer-info"></span></p>
+                <p><strong>Medicine Name:</strong> <span id="medicine-name-info"></span></p>
+                <p><strong>Quantity:</strong> <span id="quantity-info"></span></p>
+                <p><strong>Manufacture Date:</strong> <span id="manufacture-date-info"></span></p>
+                <p><strong>Expiry Date:</strong> <span id="expiry-date-info"></span></p>
+                <a id="drive-link-info" target="_blank">View PDF</a>
+            </div>
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
+    <script type="module" src="scanner2.js"></script>
+</body>
+</html>
